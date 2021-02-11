@@ -25,12 +25,12 @@ const GameNavigator = createStackNavigator(
         backgroundColor: android ? colors.primary : 'white',
         borderBottomColor: android ? '' : '#ccc',
       },
-      headerTintColor: android ? 'black' : colors.primary,
+      headerTintColor: android ? 'white' : colors.primary,
       headerTitle: 'Guess The Number',
       headerTitleAlign: 'center',
       headerTitleStyle: { fontFamily: 'open-sans-bold' },
     },
-  },   
+  }
 );
 
 export default createAppContainer(GameNavigator);

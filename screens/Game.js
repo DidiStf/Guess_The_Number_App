@@ -8,6 +8,8 @@ import NumberContainer from '../components/NumberContainer';
 import MainButton from '../components/MainButton';
 import TitleText from '../components/TitleText';
 
+import colors from '../constants/colors';
+
 const generateRandomBetween = (min, max, exclude) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -68,14 +70,14 @@ const GameView = ({ navigation }) => {
   };
 
   const handleGameOver = () => {
-     navigation.navigate({
-        routeName: 'GameOverView',
-            params: {
-              rounds: pastGuesses.length,
-              userNumber: userChoice,
-            },
-      })
-  }
+    navigation.navigate({
+      routeName: 'GameOverView',
+      params: {
+        rounds: pastGuesses.length,
+        userNumber: userChoice,
+      },
+    });
+  };
 
   useEffect(() => {
     if (currentGuess === userChoice) {
@@ -113,13 +115,13 @@ const GameView = ({ navigation }) => {
           style={{
             ...styles.listContainer,
             width: availableDeviceWidth > 350 ? '60%' : '80%',
-          }}>
+          }}
+        >
           <FlatList
             contentContainerStyle={styles.list}
             data={pastGuesses}
-            renderItem={(item) =>
-              renderListItem(pastGuesses.length, item)
-            }></FlatList>
+            renderItem={(item) => renderListItem(pastGuesses.length, item)}
+          ></FlatList>
         </View>
       </View>
     );
@@ -133,7 +135,8 @@ const GameView = ({ navigation }) => {
         style={{
           ...styles.buttonContainer,
           marginTop: availableDeviceHeight > 600 ? 20 : 5,
-        }}>
+        }}
+      >
         <MainButton onPress={() => handleNextGuess('lower')}>
           <Ionicons name='md-remove' size={24} color='white' />
         </MainButton>
@@ -146,9 +149,8 @@ const GameView = ({ navigation }) => {
           contentContainerStyle={styles.list}
           keyExtractor={(item) => item}
           data={pastGuesses}
-          renderItem={(item) =>
-            renderListItem(pastGuesses.length, item)
-          }></FlatList>
+          renderItem={(item) => renderListItem(pastGuesses.length, item)}
+        ></FlatList>
       </View>
     </View>
   );
@@ -165,6 +167,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     alignItems: 'center',
+    backgroundColor: colors.background,
   },
   guessListItem: {
     borderColor: '#ccc',

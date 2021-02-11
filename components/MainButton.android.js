@@ -34,7 +34,7 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   buttonText: {
-    color: 'white',
+    color: colors.background,
     fontFamily: 'open-sans',
     fontSize: 18,
   },

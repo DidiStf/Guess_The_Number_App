@@ -7,7 +7,7 @@ const BodyText = ({ children, style }) => (
 
 const styles = StyleSheet.create({
   titleText: {
-    color: 'black',
+    color: 'white',
     fontSize: 18,
     fontFamily: 'open-sans-bold',
   },

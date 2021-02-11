@@ -25,7 +25,7 @@ const GameOverView = ({ navigation }) => {
   );
 
   const handleNewGame = () => {
-     navigation.popToTop();
+    navigation.popToTop();
   };
 
   useEffect(() => {
@@ -49,7 +49,8 @@ const GameOverView = ({ navigation }) => {
             width: availableDeviceWidth * 0.7,
             height: availableDeviceWidth * 0.7,
             marginVertical: availableDeviceHeight / 20,
-          }}>
+          }}
+        >
           <Image
             source={require('../assets/images/success.png')}
             style={styles.image}
@@ -59,12 +60,14 @@ const GameOverView = ({ navigation }) => {
           style={{
             ...styles.resultContainer,
             marginVertical: availableDeviceHeight / 40,
-          }}>
+          }}
+        >
           <BodyText
             style={{
               ...styles.resultText,
               fontSize: availableDeviceHeight < 600 ? 16 : 20,
-            }}>
+            }}
+          >
             Your phone needed <Text style={styles.highlight}>{rounds}</Text>{' '}
             rounds to guess the number{' '}
             <Text style={styles.highlight}>{userNumber}</Text>.
@@ -82,6 +85,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingVertical: 10,
+    backgroundColor: colors.background,
+    height: Dimensions.get('window').height - 80,
   },
   highlight: {
     color: colors.primary,
@@ -102,6 +107,7 @@ const styles = StyleSheet.create({
   },
   resultText: {
     textAlign: 'center',
+    color: colors.accent,
   },
 });
 

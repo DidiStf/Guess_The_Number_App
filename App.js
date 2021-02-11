@@ -4,10 +4,6 @@ import { AppLoading } from 'expo';
 
 import GameNavigator from './navigation/GameNavigator';
 
-import GameView from './screens/Game';
-import GameOverView from './screens/GameOver';
-import StartGameView from './screens/StartGame';
-
 const fetchFonts = () => {
   return Font.loadAsync({
     'open-sans': require('./assets/fonts/OpenSans-Regular.ttf'),
@@ -29,5 +25,5 @@ export default function App() {
       />
     );
 
-  return <GameNavigator />;
+  return <GameNavigator style={{ height: '100%' }} />;
 }

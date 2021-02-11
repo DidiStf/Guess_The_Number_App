@@ -57,11 +57,11 @@ const StartGameView = ({ navigation }) => {
     setEnteredValue('');
     setSelectedNumber(null);
     navigation.navigate({
-            routeName: 'GameView',
-            params: {
-              userChoice: selectedNumber,
-            },
-          });
+      routeName: 'GameView',
+      params: {
+        userChoice: selectedNumber,
+      },
+    });
   };
 
   useEffect(() => {
@@ -76,54 +76,51 @@ const StartGameView = ({ navigation }) => {
 
   return (
     <ScrollView>
-      <KeyboardAvoidingView behavior='position' keyboardVerticalOffset={30}>
-        <TouchableWithoutFeedback
-          onPress={() => {
-            Keyboard.dismiss();
-          }}>
-          <View style={styles.startGameView}>
-            <TitleText>Start a New Game!</TitleText>
-            <Card style={styles.inputContainer}>
-              <BodyText>Select a Number</BodyText>
-              <Input
-                style={styles.input}
-                autoCapitalize='none'
-                autoCorrect={false}
-                blurOnSubmit
-                keyboardType='number-pad'
-                maxLength={2}
-                onChangeText={handleInputNumber}
-                value={enteredValue}
-              />
-              <View style={styles.buttonsContainer}>
-                <View style={{ width: buttonWidth }}>
-                  <Button
-                    title='Reset'
-                    onPress={handleResetInput}
-                    color={colors.accent}
-                  />
-                </View>
-                <View style={{ width: buttonWidth }}>
-                  <Button
-                    title='Confirm'
-                    onPress={handleConfirmInput}
-                    color={colors.primary}
-                  />
-                </View>
+      <TouchableWithoutFeedback
+        onPress={() => {
+          Keyboard.dismiss();
+        }}
+      >
+        <View style={styles.startGameView}>
+          <TitleText>Start a New Game!</TitleText>
+          <Card style={styles.inputContainer}>
+            <BodyText>Select a Number</BodyText>
+            <Input
+              style={styles.input}
+              autoCapitalize='none'
+              autoCorrect={false}
+              blurOnSubmit
+              keyboardType='number-pad'
+              maxLength={2}
+              onChangeText={handleInputNumber}
+              value={enteredValue}
+            />
+            <View style={styles.buttonsContainer}>
+              <View style={{ width: buttonWidth }}>
+                <Button
+                  title='Reset'
+                  onPress={handleResetInput}
+                  color={colors.background}
+                />
               </View>
+              <View style={{ width: buttonWidth }}>
+                <Button
+                  title='Confirm'
+                  onPress={handleConfirmInput}
+                  color={colors.primary}
+                />
+              </View>
+            </View>
+          </Card>
+          {confirmed ? (
+            <Card style={styles.summaryConntainer}>
+              <BodyText>You selected</BodyText>
+              <NumberContainer>{selectedNumber}</NumberContainer>
+              <MainButton onPress={handleStartGame}>Start Game</MainButton>
             </Card>
-            {confirmed ? (
-              <Card style={styles.summaryConntainer}>
-                <BodyText>You selected</BodyText>
-                <NumberContainer>{selectedNumber}</NumberContainer>
-                <MainButton onPress={handleStartGame}>
-                  Start Game
-                </MainButton>
-              </Card>
-            ) : null}
-          </View>
-        </TouchableWithoutFeedback>
-      </KeyboardAvoidingView>
+          ) : null}
+        </View>
+      </TouchableWithoutFeedback>
     </ScrollView>
   );
 };
@@ -154,6 +151,8 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     alignItems: 'center',
+    backgroundColor: colors.background,
+    height: Dimensions.get('window').height - 80,
   },
 });
 export default StartGameView;
